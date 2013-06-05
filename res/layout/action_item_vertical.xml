@@ -10,7 +10,8 @@
 	<ImageView
 		android:id="@+id/iv_icon" 
 		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		android:layout_margin="5dp"/>
 
 	<TextView 
 		android:id="@+id/tv_title"
@@ -18,8 +19,12 @@
 		android:layout_height="fill_parent" 
 		android:gravity="center_vertical"
 		android:paddingLeft="5dip"
-		android:paddingRight="10dip"
+		android:paddingRight="5dip"
 		android:text="Chart"
-		android:textColor="#fff"/>
+		android:textSize="18sp"
+		android:layout_margin="5dp"
+		android:textColor="#fff"
+		android:inputType="none"
+		android:imeOptions="flagNoEnterAction"/>
 									         
 </LinearLayout>         

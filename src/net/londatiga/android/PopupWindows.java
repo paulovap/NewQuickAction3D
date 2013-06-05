@@ -46,7 +46,6 @@ public class PopupWindows {
 				return false;
 			}
 		});
-
 		mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 	}
 	
@@ -81,7 +80,7 @@ public class PopupWindows {
 		mWindow.setTouchable(true);
 		mWindow.setFocusable(true);
 		mWindow.setOutsideTouchable(true);
-
+		mWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
 		mWindow.setContentView(mRootView);
 	}
 

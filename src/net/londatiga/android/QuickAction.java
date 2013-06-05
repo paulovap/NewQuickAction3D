@@ -1,25 +1,25 @@
 package net.londatiga.android;
 
-import android.content.Context;
+import java.util.ArrayList;
+import java.util.List;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.ScrollView;
-import android.widget.RelativeLayout;
-import android.widget.PopupWindow.OnDismissListener;
-
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
-
-import java.util.List;
-import java.util.ArrayList;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 /**
  * QuickAction dialog, shows action list as icon and text like the one in Gallery3D app. Currently supports vertical 
@@ -109,6 +109,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	 */
 	public void setRootViewId(int id) {
 		mRootView	= (ViewGroup) mInflater.inflate(id, null);
+
 		mTrack 		= (ViewGroup) mRootView.findViewById(R.id.tracks);
 
 		mArrowDown 	= (ImageView) mRootView.findViewById(R.id.arrow_down);
@@ -203,8 +204,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT);
             
             separator.setLayoutParams(params);
-            separator.setPadding(5, 0, 5, 0);
-            
+            separator.setPadding(10, 0, 10, 0);
             mTrack.addView(separator, mInsertPos);
             
             mInsertPos++;
@@ -267,7 +267,9 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		int dyTop			= anchorRect.top;
 		int dyBottom		= screenHeight - anchorRect.bottom;
 
-		boolean onTop		= (dyTop > dyBottom) ? true : false;
+		//TODO: fix this for keyboard open
+		//boolean onTop		= (dyTop > dyBottom) ? true : false;
+		boolean onTop		= (dyTop > dyBottom) ? true : true;
 
 		if (onTop) {
 			if (rootHeight > dyTop) {
@@ -286,7 +288,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 			}
 		}
 		
-		showArrow(((onTop) ? R.id.arrow_down : R.id.arrow_up), arrowPos);
+		//showArrow(((onTop) ? R.id.arrow_down : R.id.arrow_up), arrowPos);
 		
 		setAnimationStyle(screenWidth, anchorRect.centerX(), onTop);
 		
